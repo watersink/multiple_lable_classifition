@@ -119,6 +119,7 @@ image_num = -1
 
 
 root = tkinter.Tk()
+root.attributes("-topmost", False)
 root.title('多标签分类')        #窗口标题
 root.resizable(True, True)    #固定窗口大小
 
@@ -132,8 +133,10 @@ root.wm_attributes('-topmost',1)#窗口置顶
 
 # 1创建主菜单
 bigmenu = tkinter.Menu(root)
-bigmenu.add_command(label="打开目录", command=open_dir)
-bigmenu.add_command(label="退出", command=close_window)
+file_menu = tkinter.Menu(bigmenu) # 创建空菜单
+file_menu.add_command(label="打开目录", command=open_dir)
+file_menu.add_command(label="退出", command=close_window)
+bigmenu.add_cascade(label="文件", menu=file_menu) # 将file_menu菜单添加到菜单栏
 # 4将主餐单加入窗口
 root.config(menu = bigmenu)
 
